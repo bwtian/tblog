@@ -1,0 +1,25 @@
+---
+title: 爬虫
+author: Tian
+date: '2019-05-15'
+slug: 爬虫
+categories: []
+tags: []
+---
+# 什么是爬虫rvest
+- read_html()：下载并解析网页
+- html_nodes()：定位并获取节点信息
+- html_text()：提取节点属性文本信息
+## rvest 介绍
+- CRAN： https://cran.r-project.org/web/packages/rvest/index.html
+
+```{r}
+x <- 1:10
+y <- 11:20
+plot(x,y)
+```
+
+
+
+
+
