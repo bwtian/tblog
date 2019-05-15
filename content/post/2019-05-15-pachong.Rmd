@@ -21,6 +21,7 @@ plot(x,y)
 
 ```{r}
 library(rvest)
+library(knitr)
 link <- "https://www.ncbi.nlm.nih.gov/pubmed/?term=disaster"
 web <- read_html(link)
 
@@ -30,7 +31,8 @@ author <- web %>% html_nodes('div.supp p.desc') %>%html_text()
 
 journal <- web %>% html_nodes('div.supp p.details span') %>%html_text()
 
-dat <- data.frame(title = title, author = author, journal = journal)
+dat <- data.frame(Title = title, Author = author, Journal = journal)
+kable(dat, format = "html")
 print(dat)
 # write.table(dat, 'disaster1.csv', sep=",",row.names = F)
 tj <- table(dat[3])

@@ -399,7 +399,8 @@ plot(x,y)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;rvest&#39;:
 ##   method            from
 ##   read_xml.response xml2</code></pre>
-<pre class="r"><code>link &lt;- &quot;https://www.ncbi.nlm.nih.gov/pubmed/?term=disaster&quot;
+<pre class="r"><code>library(knitr)
+link &lt;- &quot;https://www.ncbi.nlm.nih.gov/pubmed/?term=disaster&quot;
 web &lt;- read_html(link)
 
 title &lt;- web %&gt;% html_nodes(&#39;div.rslt p.title a&#39;) %&gt;% html_text()
@@ -408,9 +409,247 @@ author &lt;- web %&gt;% html_nodes(&#39;div.supp p.desc&#39;) %&gt;%html_text()
 
 journal &lt;- web %&gt;% html_nodes(&#39;div.supp p.details span&#39;) %&gt;%html_text()
 
-dat &lt;- data.frame(title = title, author = author, journal = journal)
-print(dat)</code></pre>
-<pre><code>##                                                                                                                                                             title
+dat &lt;- data.frame(Title = title, Author = author, Journal = journal)
+kable(dat, format = &quot;html&quot;)</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Title
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Journal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+The role of event relevance and congruence to social groups in flashbulb memory formation.
+</td>
+<td style="text-align:left;">
+Talarico JM, Bohn A, Wessel I.
+</td>
+<td style="text-align:left;">
+Memory
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Substitute or complement? How social capital, age and socioeconomic status interacted to impact mortality in Japan’s 3/11 tsunami.
+</td>
+<td style="text-align:left;">
+Ye M, Aldrich DP.
+</td>
+<td style="text-align:left;">
+SSM Popul Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Survey data of household perceptions of drought, mitigation and adaptation practices in East Nusa Tenggara, Indonesia.
+</td>
+<td style="text-align:left;">
+Kuswanto H, Hibatullah F, Soedjono ES, Efendi F.
+</td>
+<td style="text-align:left;">
+Data Brief
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sexual Function and Factors Affecting Menopause: A Systematic Review.
+</td>
+<td style="text-align:left;">
+Heidari M, Ghodusi M, Rezaei P, Kabirian Abyaneh S, Sureshjani EH, Sheikhi RA.
+</td>
+<td style="text-align:left;">
+J Menopausal Med
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Premature Death of a Schizophrenic Patient due to Evacuation after a Nuclear Disaster in Fukushima.
+</td>
+<td style="text-align:left;">
+Sonoda Y, Ozaki A, Hori A, Higuchi A, Shimada Y, Yamamoto K, Morita T, Sawano T, Leppold C, Tsubokura M.
+</td>
+<td style="text-align:left;">
+Case Rep Psychiatry
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A Study of Surgical Cases During Earthquake Disaster in A Medical College.
+</td>
+<td style="text-align:left;">
+K C K, Thapa RK, Khadka S, Paudel D.
+</td>
+<td style="text-align:left;">
+JNMA J Nepal Med Assoc
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Miyagi Medical and Welfare Information Network: A Backup System for Patient Clinical Information after the Great East Japan Earthquake and Tsunami.
+</td>
+<td style="text-align:left;">
+Ido K, Nakamura N, Nakayama M.
+</td>
+<td style="text-align:left;">
+Tohoku J Exp Med
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Determining Key Influences on Patient Ability to Successfully Manage Noncommunicable Disease After Natural Disaster.
+</td>
+<td style="text-align:left;">
+Ryan BJ, Franklin RC, Burkle FM, Smith EC, Aitken P, Leggat PA.
+</td>
+<td style="text-align:left;">
+Prehosp Disaster Med
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Experimental and field investigations on seismic response of joints and beddings in rocks.
+</td>
+<td style="text-align:left;">
+Liu Y, Lu CP, Liu B, Zhang H, Wang HY.
+</td>
+<td style="text-align:left;">
+Ultrasonics
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+A temperature indicator for heavy air pollution risks (TIP).
+</td>
+<td style="text-align:left;">
+Zhang Y, Wang S, Fan X, Xin J, Cheng Y.
+</td>
+<td style="text-align:left;">
+Sci Total Environ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Degradation of nitrilotris-methylenephosphonic acid (NTMP) antiscalant via persulfate photolysis: Implications on desalination concentrate treatment.
+</td>
+<td style="text-align:left;">
+Wang Z, Chen G, Patton S, Ren C, Liu J, Liu H.
+</td>
+<td style="text-align:left;">
+Water Res
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Surface nitrous oxide concentrations and fluxes from water bodies of the agricultural watershed in Eastern China.
+</td>
+<td style="text-align:left;">
+Xiao Q, Hu Z, Fu C, Bian H, Lee X, Chen S, Shang D.
+</td>
+<td style="text-align:left;">
+Environ Pollut
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Geochemical discrimination of bulk organic matter in surface sediments of the Cross River estuary system and adjacent shelf, South East Nigeria (West Africa).
+</td>
+<td style="text-align:left;">
+Dan SF, Liu SM, Yang B, Udoh EC, Umoh U, Ewa-Oboho I.
+</td>
+<td style="text-align:left;">
+Sci Total Environ
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Prevalence of depression among Bangladeshi village women subsequent to a natural disaster: A pilot study.
+</td>
+<td style="text-align:left;">
+Mamun MA, Huq N, Papia ZF, Tasfina S, Gozal D.
+</td>
+<td style="text-align:left;">
+Psychiatry Res
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Collaborative Management Strategies for Drug Shortages in Neurocritical Care.
+</td>
+<td style="text-align:left;">
+Clark SL, Levasseur-Franklin K, Pajoumand M, Barra M, Armahizer M, Patel DV, Wyatt Chester K, Tully AP.
+</td>
+<td style="text-align:left;">
+Neurocrit Care
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Numerical simulation study of strip filling for water-preserved coal mining.
+</td>
+<td style="text-align:left;">
+Sun WB, Wang Y, Qiu HF, Ding ZW.
+</td>
+<td style="text-align:left;">
+Environ Sci Pollut Res Int
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The combined effects of nitrogen fertilizer, humic acid, and gypsum on yield-scaled greenhouse gas emissions from a coastal saline rice field.
+</td>
+<td style="text-align:left;">
+Sun L, Ma Y, Liu Y, Li J, Deng J, Rao X, Zhang Y.
+</td>
+<td style="text-align:left;">
+Environ Sci Pollut Res Int
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Molecular Simulation Study on the Microscopic Structure and Mechanical Property of Defect-Containing sI Methane Hydrate.
+</td>
+<td style="text-align:left;">
+Cai S, Tang Q, Tian S, Lu Y, Gao X.
+</td>
+<td style="text-align:left;">
+Int J Mol Sci
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Effect of Al⁻Zn Alloy Coating on Corrosion Fatigue Behavior of X80 Riser Steel.
+</td>
+<td style="text-align:left;">
+Han Z, Huang X, Yang Z.
+</td>
+<td style="text-align:left;">
+Materials (Basel)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Radiation-Induced Heart Diseases: Protective Effects of Natural Products.
+</td>
+<td style="text-align:left;">
+Musa AE, Shabeeb D.
+</td>
+<td style="text-align:left;">
+Medicina (Kaunas)
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>print(dat)</code></pre>
+<pre><code>##                                                                                                                                                             Title
 ## 1                                                                      The role of event relevance and congruence to social groups in flashbulb memory formation.
 ## 2                              Substitute or complement? How social capital, age and socioeconomic status interacted to impact mortality in Japan&#39;s 3/11 tsunami.
 ## 3                                          Survey data of household perceptions of drought, mitigation and adaptation practices in East Nusa Tenggara, Indonesia.
@@ -431,7 +670,7 @@ print(dat)</code></pre>
 ## 18                                       Molecular Simulation Study on the Microscopic Structure and Mechanical Property of Defect-Containing sI Methane Hydrate.
 ## 19                                                                         Effect of Al&lt;U+207B&gt;Zn Alloy Coating on Corrosion Fatigue Behavior of X80 Riser Steel.
 ## 20                                                                                      Radiation-Induced Heart Diseases: Protective Effects of Natural Products.
-##                                                                                                      author
+##                                                                                                      Author
 ## 1                                                                            Talarico JM, Bohn A, Wessel I.
 ## 2                                                                                         Ye M, Aldrich DP.
 ## 3                                                          Kuswanto H, Hibatullah F, Soedjono ES, Efendi F.
@@ -452,7 +691,7 @@ print(dat)</code></pre>
 ## 18                                                                      Cai S, Tang Q, Tian S, Lu Y, Gao X.
 ## 19                                                                                  Han Z, Huang X, Yang Z.
 ## 20                                                                                      Musa AE, Shabeeb D.
-##                       journal
+##                       Journal
 ## 1                      Memory
 ## 2            SSM Popul Health
 ## 3                  Data Brief
