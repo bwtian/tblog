@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">7 min read</span>
+    <span class="article-duration">10 min read</span>
     
 
     <h1 class="article-title">爬虫</h1>
@@ -410,6 +410,262 @@ Medicina (Kaunas)
 tj &lt;- table(dat[3])
 hist(tj)</code></pre>
 <p><img src="/post/2019-05-15-pachong_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>paperS &lt;- function(x){
+  
+  library(rvest)
+  library(knitr)
+  link &lt;- paste0(&quot;https://www.ncbi.nlm.nih.gov/pubmed/?term=&quot;,x)
+  web &lt;- read_html(link)
+  
+  title &lt;- web %&gt;% html_nodes(&#39;div.rslt p.title a&#39;) %&gt;% html_text()
+  
+  author &lt;- web %&gt;% html_nodes(&#39;div.supp p.desc&#39;) %&gt;%html_text()
+  
+  journal &lt;- web %&gt;% html_nodes(&#39;div.supp p.details span&#39;) %&gt;%html_text()
+  
+  dat &lt;- data.frame(Title = title, Author = author, Journal = journal)
+  # write.table(dat, &#39;disaster1.csv&#39;, sep=&quot;,&quot;,row.names = F)
+  kable(dat, format = &quot;html&quot;)
+  
+}
+paperS(&quot;disaster+risk+reduction&quot;)</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Title
+</th>
+<th style="text-align:left;">
+Author
+</th>
+<th style="text-align:left;">
+Journal
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Influence of drainage network and compensatory techniques on urban flooding susceptibility.
+</td>
+<td style="text-align:left;">
+Caprario J, Rech AS, Tasca FA, Finotti AR.
+</td>
+<td style="text-align:left;">
+Water Sci Technol
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Drinking Water Salinity, Urinary Macro-Mineral Excretions, and Blood Pressure in the Southwest Coastal Population of Bangladesh.
+</td>
+<td style="text-align:left;">
+Naser AM, Rahman M, Unicomb L, Doza S, Gazi MS, Alam GR, Karim MR, Uddin MN, Khan GK, Ahmed KM, Shamsudduha M, Anand S, Narayan KMV, Chang HH, Luby SP, Gribble MO, Clasen TF.
+</td>
+<td style="text-align:left;">
+J Am Heart Assoc
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Disability and disaster risk reduction as an incongruent matrix: Lessons from rural Zimbabwe.
+</td>
+<td style="text-align:left;">
+Lunga W, Pathias Bongo P, van Niekerk D, Musarurwa C.
+</td>
+<td style="text-align:left;">
+Jamba
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Participatory capacities and vulnerabilities assessment: Towards the realisation of community-based early warning system for deep-seated landslides.
+</td>
+<td style="text-align:left;">
+Gumiran BAL, Moncada FM, Gasmen HJ, Boyles-Panting NR, Solidum RU.
+</td>
+<td style="text-align:left;">
+Jamba
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Health Risks in Disaster Responders: A Conceptual Framework.
+</td>
+<td style="text-align:left;">
+Khatri J, Fitzgerald G, Poudyal Chhetri MB.
+</td>
+<td style="text-align:left;">
+Prehosp Disaster Med
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Improving the science and evidence base of disaster response: a policy research study.
+</td>
+<td style="text-align:left;">
+Jillson IA, Clarke M, Allen C, Waller S, Koehlmoos T, Mumford W, Jansen J, McKay K, Trant A.
+</td>
+<td style="text-align:left;">
+BMC Health Serv Res
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Global Heat Wave Hazard Considering Humidity Effects during the 21st Century.
+</td>
+<td style="text-align:left;">
+Chen X, Li N, Liu J, Zhang Z, Liu Y.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Food-Related Health Emergency-Disaster Risk Reduction in Rural Ethnic Minority Communities: A Pilot Study of Knowledge, Awareness and Practice of Food Labelling and Salt-intake Reduction in a Kunge Community in China.
+</td>
+<td style="text-align:left;">
+Chan EYY, Lam HCY, Lo ESK, Tsang SNS, Yung TKC, Wong CKP.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Adoption of Individual Flood Damage Mitigation Measures in New York City: An Extension of Protection Motivation Theory.
+</td>
+<td style="text-align:left;">
+Botzen WJW, Kunreuther H, Czajkowski J, de Moel H.
+</td>
+<td style="text-align:left;">
+Risk Anal
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Slip on a mapped normal fault for the 28th December 1908 Messina earthquake (Mw 7.1) in Italy.
+</td>
+<td style="text-align:left;">
+Meschis M, Roberts GP, Mildon ZK, Robertson J, Michetti AM, Faure Walker JP.
+</td>
+<td style="text-align:left;">
+Sci Rep
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Natural disaster preparedness in a multi-hazard environment: Characterizing the sociodemographic profile of those better (worse) prepared.
+</td>
+<td style="text-align:left;">
+Bronfman NC, Cisternas PC, Repetto PB, Castañeda JV.
+</td>
+<td style="text-align:left;">
+PLoS One
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Psychosocial Management Before, During, and After Emergencies and Disasters-Results from the Kobe Expert Meeting.
+</td>
+<td style="text-align:left;">
+Généreux M, Schluter PJ, Takahashi S, Usami S, Mashino S, Kayano R, Kim Y.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Intervention strategies for improvement of disasters risk perception: Family-centered approach.
+</td>
+<td style="text-align:left;">
+Seyedin H, Samadipour E, Salmani I.
+</td>
+<td style="text-align:left;">
+J Educ Health Promot
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Design of Temperature Insurance Index and Risk Zonation for Single-Season Rice in Response to High-Temperature and Low-Temperature Damage: A Case Study of Jiangsu Province, China.
+</td>
+<td style="text-align:left;">
+Guo J, Jin J, Tang Y, Wu X.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Global Cancer Burden and Natural Disasters: A Focus on Asia’s Vulnerability, Resilience Building, and Impact on Cancer Care.
+</td>
+<td style="text-align:left;">
+De Guzman R, Malik M.
+</td>
+<td style="text-align:left;">
+J Glob Oncol
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Is “Perceived Water Insecurity” Associated with Disaster Risk Perception, Preparedness Attitudes, and Coping Ability in Rural China? (A Health-EDRM Pilot Study).
+</td>
+<td style="text-align:left;">
+Ho JY, Chan EYY, Lam HCY, Yeung MPS, Wong CKP, Yung TKC.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+WHO Thematic Platform for Health Emergency and Disaster Risk Management Research Network (TPRN): Report of the Kobe Expert Meeting.
+</td>
+<td style="text-align:left;">
+Kayano R, Chan EY, Murray V, Abrahams J, Barber SL.
+</td>
+<td style="text-align:left;">
+Int J Environ Res Public Health
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+How violence against women and girls undermines resilience to climate risks in Chad.
+</td>
+<td style="text-align:left;">
+Masson VL, Benoudji C, Reyes SS, Bernard G.
+</td>
+<td style="text-align:left;">
+Disasters
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Complexity, continuity and change: livelihood resilience in the Darfur region of Sudan.
+</td>
+<td style="text-align:left;">
+Young H, Ismail MA.
+</td>
+<td style="text-align:left;">
+Disasters
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Influencing resilience: the role of policy entrepreneurs in mainstreaming climate adaptation.
+</td>
+<td style="text-align:left;">
+Tanner T, Zaman RU, Acharya S, Gogoi E, Bahadur A.
+</td>
+<td style="text-align:left;">
+Disasters
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 
     </div>

@@ -39,6 +39,27 @@ tj <- table(dat[3])
 hist(tj)
 ```
 
+```{r}
+paperS <- function(x){
+  
+  library(rvest)
+  library(knitr)
+  link <- paste0("https://www.ncbi.nlm.nih.gov/pubmed/?term=",x)
+  web <- read_html(link)
+  
+  title <- web %>% html_nodes('div.rslt p.title a') %>% html_text()
+  
+  author <- web %>% html_nodes('div.supp p.desc') %>%html_text()
+  
+  journal <- web %>% html_nodes('div.supp p.details span') %>%html_text()
+  
+  dat <- data.frame(Title = title, Author = author, Journal = journal)
+  # write.table(dat, 'disaster1.csv', sep=",",row.names = F)
+  kable(dat, format = "html")
+  
+}
+paperS("disaster+risk+reduction")
+```
 
 
 
