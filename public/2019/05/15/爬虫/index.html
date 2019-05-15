@@ -62,7 +62,7 @@
 
   <article class="article">
     
-    <span class="article-duration">1 min read</span>
+    <span class="article-duration">4 min read</span>
     
 
     <h1 class="article-title">爬虫</h1>
@@ -93,6 +93,84 @@ plot(x,y)</code></pre>
 <pre><code>## Registered S3 method overwritten by &#39;rvest&#39;:
 ##   method            from
 ##   read_xml.response xml2</code></pre>
+<pre class="r"><code>link &lt;- &quot;https://www.ncbi.nlm.nih.gov/pubmed/?term=disaster&quot;
+web &lt;- read_html(link)
+
+title &lt;- web %&gt;% html_nodes(&#39;div.rslt p.title a&#39;) %&gt;% html_text()
+
+author &lt;- web %&gt;% html_nodes(&#39;div.supp p.desc&#39;) %&gt;%html_text()
+
+journal &lt;- web %&gt;% html_nodes(&#39;div.supp p.details span&#39;) %&gt;%html_text()
+
+dat &lt;- data.frame(title = title, author = author, journal = journal)
+print(dat)</code></pre>
+<pre><code>##                                                                                                                                                             title
+## 1                                                                      The role of event relevance and congruence to social groups in flashbulb memory formation.
+## 2                              Substitute or complement? How social capital, age and socioeconomic status interacted to impact mortality in Japan&#39;s 3/11 tsunami.
+## 3                                          Survey data of household perceptions of drought, mitigation and adaptation practices in East Nusa Tenggara, Indonesia.
+## 4                                                                                           Sexual Function and Factors Affecting Menopause: A Systematic Review.
+## 5                                                             Premature Death of a Schizophrenic Patient due to Evacuation after a Nuclear Disaster in Fukushima.
+## 6                                                                                      A Study of Surgical Cases During Earthquake Disaster in A Medical College.
+## 7             Miyagi Medical and Welfare Information Network: A Backup System for Patient Clinical Information after the Great East Japan Earthquake and Tsunami.
+## 8                                            Determining Key Influences on Patient Ability to Successfully Manage Noncommunicable Disease After Natural Disaster.
+## 9                                                                      Experimental and field investigations on seismic response of joints and beddings in rocks.
+## 10                                                                                                   A temperature indicator for heavy air pollution risks (TIP).
+## 11          Degradation of nitrilotris-methylenephosphonic acid (NTMP) antiscalant via persulfate photolysis: Implications on desalination concentrate treatment.
+## 12                                              Surface nitrous oxide concentrations and fluxes from water bodies of the agricultural watershed in Eastern China.
+## 13 Geochemical discrimination of bulk organic matter in surface sediments of the Cross River estuary system and adjacent shelf, South East Nigeria (West Africa).
+## 14                                                      Prevalence of depression among Bangladeshi village women subsequent to a natural disaster: A pilot study.
+## 15                                                                                  Collaborative Management Strategies for Drug Shortages in Neurocritical Care.
+## 16                                                                                   Numerical simulation study of strip filling for water-preserved coal mining.
+## 17                 The combined effects of nitrogen fertilizer, humic acid, and gypsum on yield-scaled greenhouse gas emissions from a coastal saline rice field.
+## 18                                       Molecular Simulation Study on the Microscopic Structure and Mechanical Property of Defect-Containing sI Methane Hydrate.
+## 19                                                                         Effect of Al&lt;U+207B&gt;Zn Alloy Coating on Corrosion Fatigue Behavior of X80 Riser Steel.
+## 20                                                                                      Radiation-Induced Heart Diseases: Protective Effects of Natural Products.
+##                                                                                                      author
+## 1                                                                            Talarico JM, Bohn A, Wessel I.
+## 2                                                                                         Ye M, Aldrich DP.
+## 3                                                          Kuswanto H, Hibatullah F, Soedjono ES, Efendi F.
+## 4                            Heidari M, Ghodusi M, Rezaei P, Kabirian Abyaneh S, Sureshjani EH, Sheikhi RA.
+## 5  Sonoda Y, Ozaki A, Hori A, Higuchi A, Shimada Y, Yamamoto K, Morita T, Sawano T, Leppold C, Tsubokura M.
+## 6                                                                      K C K, Thapa RK, Khadka S, Paudel D.
+## 7                                                                            Ido K, Nakamura N, Nakayama M.
+## 8                                           Ryan BJ, Franklin RC, Burkle FM, Smith EC, Aitken P, Leggat PA.
+## 9                                                                    Liu Y, Lu CP, Liu B, Zhang H, Wang HY.
+## 10                                                                  Zhang Y, Wang S, Fan X, Xin J, Cheng Y.
+## 11                                                           Wang Z, Chen G, Patton S, Ren C, Liu J, Liu H.
+## 12                                                      Xiao Q, Hu Z, Fu C, Bian H, Lee X, Chen S, Shang D.
+## 13                                                    Dan SF, Liu SM, Yang B, Udoh EC, Umoh U, Ewa-Oboho I.
+## 14                                                           Mamun MA, Huq N, Papia ZF, Tasfina S, Gozal D.
+## 15  Clark SL, Levasseur-Franklin K, Pajoumand M, Barra M, Armahizer M, Patel DV, Wyatt Chester K, Tully AP.
+## 16                                                                         Sun WB, Wang Y, Qiu HF, Ding ZW.
+## 17                                                        Sun L, Ma Y, Liu Y, Li J, Deng J, Rao X, Zhang Y.
+## 18                                                                      Cai S, Tang Q, Tian S, Lu Y, Gao X.
+## 19                                                                                  Han Z, Huang X, Yang Z.
+## 20                                                                                      Musa AE, Shabeeb D.
+##                       journal
+## 1                      Memory
+## 2            SSM Popul Health
+## 3                  Data Brief
+## 4            J Menopausal Med
+## 5         Case Rep Psychiatry
+## 6      JNMA J Nepal Med Assoc
+## 7            Tohoku J Exp Med
+## 8        Prehosp Disaster Med
+## 9                 Ultrasonics
+## 10          Sci Total Environ
+## 11                  Water Res
+## 12             Environ Pollut
+## 13          Sci Total Environ
+## 14             Psychiatry Res
+## 15             Neurocrit Care
+## 16 Environ Sci Pollut Res Int
+## 17 Environ Sci Pollut Res Int
+## 18              Int J Mol Sci
+## 19          Materials (Basel)
+## 20          Medicina (Kaunas)</code></pre>
+<pre class="r"><code># write.table(dat, &#39;disaster1.csv&#39;, sep=&quot;,&quot;,row.names = F)
+tj &lt;- table(dat[3])
+hist(tj)</code></pre>
+<p><img src="/post/2019-05-15-pachong_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 
     </div>

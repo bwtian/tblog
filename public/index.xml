@@ -36,7 +36,7 @@ When you click the Knit button a document will be generated that includes both c
       <pubDate>Wed, 15 May 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/05/15/%E7%88%AC%E8%99%AB/</guid>
-      <description>什么是爬虫rvestread_html()：下载并解析网页html_nodes()：定位并获取节点信息html_text()：提取节点属性文本信息## rvest 介绍CRAN： https://cran.r-project.org/web/packages/rvest/index.htmlx &amp;lt;- 1:10y &amp;lt;- 11:20plot(x,y)library(rvest)## 载入需要的程辑包：xml2## Registered S3 method overwritten by &amp;#39;rvest&amp;#39;:## method from## read_xml.response xml2</description>
+      <description>什么是爬虫rvestread_html()：下载并解析网页html_nodes()：定位并获取节点信息html_text()：提取节点属性文本信息## rvest 介绍CRAN： https://cran.r-project.org/web/packages/rvest/index.htmlx &amp;lt;- 1:10y &amp;lt;- 11:20plot(x,y)library(rvest)## 载入需要的程辑包：xml2## Registered S3 method overwritten by &amp;#39;rvest&amp;#39;:## method from## read_xml.response xml2link &amp;lt;- &amp;quot;https://www.ncbi.nlm.nih.gov/pubmed/?term=disaster&amp;quot;web &amp;lt;- read_html(link)title &amp;lt;- web %&amp;gt;% html_nodes(&amp;#39;div.rslt p.title a&amp;#39;) %&amp;gt;% html_text()author &amp;lt;- web %&amp;gt;% html_nodes(&amp;#39;div.supp p.desc&amp;#39;) %&amp;gt;%html_text()journal &amp;lt;- web %&amp;gt;% html_nodes(&amp;#39;div.supp p.details span&amp;#39;) %&amp;gt;%html_text()dat &amp;lt;- data.frame(title = title, author = author, journal = journal)print(dat)## title## 1 The role of event relevance and congruence to social groups in flashbulb memory formation.</description>
     </item>
     
     <item>
